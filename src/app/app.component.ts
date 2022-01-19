@@ -1,4 +1,4 @@
-import { Component, OnInit, VERSION, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
 
 @Component({
