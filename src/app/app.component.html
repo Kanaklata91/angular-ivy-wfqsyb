@@ -1,0 +1,67 @@
+<form #f="ngForm" (ngSubmit)="OnFormSubmit(f.value)">
+  <div>
+    <label>Mail address</label>
+    <input
+      type="text"
+      name="email"
+      [(ngModel)]="defaultMailAddress"
+      email
+      required
+      #email="ngModel"
+      (change)="onvalEntered(defaultMailAddress)"
+    />
+    <span *ngIf="!email.valid && email.touched"
+      >Please enter a valid emailID.</span
+    >
+  </div>
+
+  <hr />
+
+  <div>
+    <label>Select Subscritpion</label>
+
+    <select
+      name="selectOptions"
+      [(ngModel)]="ddlSelectedValue"
+      #selectOptions="ngModel"
+      (change)="onitemselected(ddlSelectedValue)"
+    >
+      <ng-container *ngFor="let option of ddlOption">
+        <option #options>{{ option }}</option>
+      </ng-container>
+    </select>
+
+    <span *ngIf="!selectOptions.valid && selectOptions.touched"
+      >Please select a valid option.</span
+    >
+  </div>
+
+  <hr />
+
+  <div>
+    <label>Password</label>
+    <input
+      type="password"
+      required
+      [ngModel]="defaultPassword"
+      name="password"
+      #password="ngModel"
+    />
+
+    <span *ngIf="!password.valid && password.touched"
+      >Please enter a valid password.</span
+    >
+  </div>
+
+  <hr />
+
+  <button>Submit</button>
+
+  <span *ngIf="!f.valid && f.touched">The Form is not valid.</span>
+</form>
+
+<p>The value entered in email is - > {{ email.value }}</p>
+
+<p>The selected option is - > {{ selectOptions.value }}</p>
+
+<p>The entered password is - > {{ password.value }}</p>
